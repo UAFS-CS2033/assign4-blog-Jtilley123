@@ -12,7 +12,7 @@ class Post {
         $this->setContent($row['content']);
         $this->setTitle($row["title"]);
         $this->setPostID($row["postID"]);
-        $this->setImage($row["imagename"]);
+       
     
     }
 

@@ -14,7 +14,7 @@
 
         public function addPost($post){
             $connection=$this->getConnection();
-            $stmt = $connection->prepare("INSERT INTO posts (title, imagename,  content, userid) VALUES (?,?, ?, ?)");
+            $stmt = $connection->prepare("INSERT INTO posts (title, content, userid) VALUES (?, ?, ?)");
             $stmt->bind_param("ssi", $post->getTitle(), $post->getContent(), $post->getUserID());
             $stmt->execute();
             $stmt->close();
@@ -23,8 +23,8 @@
 
         public function updatePost($post){
             $connection=$this->getConnection();
-            $stmt = $connection->prepare("UPDATE posts SET title=?, imagename=?, content=?, userid=? WHERE postID = ?;");
-            $stmt->bind_param("sssii", $post->getTitle(),$post->getImage(), $post->getContent(), $post->getUserID(), $post->getPostID());
+            $stmt = $connection->prepare("UPDATE posts SET title=?,  content=?, userid=? WHERE postID = ?;");
+            $stmt->bind_param("ssii", $post->getTitle(), $post->getContent(), $post->getUserID(), $post->getPostID());
             $stmt->execute();
             $stmt->close();
             $connection->close();

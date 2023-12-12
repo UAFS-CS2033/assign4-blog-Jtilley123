@@ -1,4 +1,7 @@
+<?php
 
+session_start(); 
+?>
 <div class="container">
         <div class="row">
             <div class="col">
@@ -7,13 +10,13 @@
                         <h5 class="card-title">Post List</h5>
                         <p class="card-text">Add a new post to the list.</p>
                         <form action="controller.php" method="POST">
+                        
                             <input type="hidden" name="page" value="addpost">
+                            <input type="hidden" name="userID" value="<?php echo $_SESSION['activeuserID']?>">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control mb-3" id="title" name="title" placeholder="title" required>
                             <label for="content" class="form-label">Content</label>
                             <input type="text" class="form-control mb-3" id="content" name="content" placeholder="Enter Content" required>
-                            <label for="userID" class="form-label">UserID</label>
-                            <input type="text" class="form-control mb-3" id="userID" name="userID" placeholder="Enter your userID" required>
                             
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

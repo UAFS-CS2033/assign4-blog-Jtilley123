@@ -25,6 +25,9 @@
                     <a class="nav-link" href="controller.php?page=list">Admin</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="controller.php?page=author">Author</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="controller.php?page=about">About</a>
                 </li>
                 <li class="nav-item">

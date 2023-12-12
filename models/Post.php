@@ -7,10 +7,10 @@ class Post {
     private $userID;
     
     public function load($row){
-        $this->setUserID($row['userid']);
+        $this->setUserID($row['userID']);
         $this->setContent($row['content']);
         $this->setTitle($row["title"]);
-        $this->setPostID($row["postid"]);
+        $this->setPostID($row["postID"]);
     
     }
 

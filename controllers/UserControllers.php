@@ -1,7 +1,7 @@
 <?php
     //include "ControllerAction.php";
     //include "model/ContactDAO.php";
-
+    include "PostDAO.php";
 
     class UserList implements ControllerAction{
 
@@ -10,6 +10,24 @@
             $users = $userDAO->getUsers();
             $_REQUEST['users']=$users;
             return "views/listUsers.php";
+        }
+
+        function processPOST(){
+            return;
+        }
+
+        function getAccess(){
+            return "PROTECTED";
+        }
+
+    }
+    class PostList implements ControllerAction{
+
+        function processGET(){
+            $postDAO = new PostDAO();
+            $posts = $postDAO->getPosts();
+            $_REQUEST['posts']=$posts;
+            return "views/listPosts.php";
         }
 
         function processPOST(){
@@ -53,6 +71,34 @@
         }      
 
     }
+    class PostAdd implements ControllerAction{
+
+        function processGET(){
+            return "views/addPost.php";
+        }
+
+        function processPOST(){
+            $title=$_POST['title'];
+            $content=$_POST['content'];
+            $userid=$_POST['userID'];
+           
+            $post = new Post();
+            $post->setTitle($title);
+            $post->setContent($content);
+            $post->setUserID($userid);
+           
+           
+            $postDAO = new PostDAO();
+            $postDAO->addPost($post);
+            header("Location: controller.php?page=author");
+            exit;
+        }
+
+        function getAccess(){
+            return "PROTECTED";
+        }      
+
+    }
 
 
     class UserUpdate implements ControllerAction{
@@ -88,6 +134,33 @@
         }      
 
     }
+    class PostUpdate implements ControllerAction{
+
+        function processGET(){
+            return "views/updatePost.php";
+        }
+
+        function processPOST(){
+            $postID=intval($_POST["postID"]);
+            $title=$_POST['title'];
+            $content=$_POST['content'];
+            $userID=$_POST['userID'];
+            
+            $post = new Post();
+            $post->setTitle($title);
+            $post->setContent($content);
+            $post->setUserID($userid);
+            $postDAO = new PostDAO();
+            $postDAO->updatePost($post);
+            header("Location: controller.php?page=author");
+            exit;
+        }
+
+        function getAccess(){
+            return "PROTECTED";
+        }      
+
+    }
 
     class UserDelete implements ControllerAction{
 
@@ -105,6 +178,30 @@
                 $userDAO->deleteUser($userid);
             }
             header("Location: controller.php?page=list");
+            exit;
+        }
+
+        function getAccess(){
+            return "PROTECTED";
+        }
+
+    }
+    class PostDelete implements ControllerAction{
+
+        function processGET(){
+            $postID = $_GET['postID'];
+            return 'views/delPost.php';
+
+        }
+
+        function processPOST(){
+            $postid=$_POST['postID'];
+            $submit=$_POST['submit'];
+            if($submit=='CONFIRM'){
+                $postDAO = new PostDAO();
+                $postDAO->deletePost($postid);
+            }
+            header("Location: controller.php?page=author");
             exit;
         }
 
@@ -172,18 +269,5 @@
     }
 
 
-    class Post implements ControllerAction{
-
-        function processGET(){
-            return "views/post.php";
-        }
-
-        function processPOST(){
-            return;
-        }
-
-        function getAccess(){
-            return "PUBLIC";
-        }
-    }
+    
 ?>

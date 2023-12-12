@@ -17,7 +17,7 @@
         }
 
         function getAccess(){
-            return "PROTECTED";
+            return "PRIVATE";
         }
 
     }
@@ -149,7 +149,8 @@
             $post = new Post();
             $post->setTitle($title);
             $post->setContent($content);
-            $post->setUserID($userid);
+            $post->setPostID($postID);
+            $post->setUserID($userID);
             $postDAO = new PostDAO();
             $postDAO->updatePost($post);
             header("Location: controller.php?page=author");
@@ -222,11 +223,20 @@
             $passwd=$_POST['passwd'];
             $userDAO = new UserDAO();
             $found=$userDAO->authenticate($username,$passwd);
+            $row = $found;
+                $user = new User();
+                $user->load($row);
+            
             if($found==null){
                 $nextView="Location: controller.php?page=login";
             }else{
-                $nextView="Location: controller.php?page=list";
                 $_SESSION['loggedin']='TRUE';
+                $_SESSION['activeuserID'] = $user->getUserID();
+                if($user->getURole()=='admin'){
+                    $_SESSION['isAdmin'] = 'TRUE';
+                }
+                $nextView="Location: controller.php?page=list";
+                
             }
             header($nextView);
             exit;       
@@ -268,6 +278,17 @@
         }
     }
 
+    class PostTemplate implements ControllerAction{
 
+        function processGET(){
+            return "views/postTemplate.php";
+        }
+        function processPOST(){
+            return;
+        }
+        function getAccess(){
+            return "PUBLIC";
+        }
+    }
     
 ?>

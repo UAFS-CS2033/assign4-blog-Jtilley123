@@ -19,6 +19,7 @@ create table users(
 CREATE TABLE posts (
     postID INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
+    imagename VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     publication_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     userID INT,
@@ -40,7 +41,7 @@ insert into users(username,lastname,firstname,passwd,email,urole)
 insert into users(username,lastname,firstname,passwd,email,urole)
    values('mjohnson','Johnson','Monica','password','mjohnson@gmail.com','user');
 
-INSERT INTO posts (title, content, userID) VALUES
-    ('First Post', 'This is the content of the first post.', 1),
-    ('Second Post', 'This is the content of the second post.', 2),
-    ('Third Post', 'This is the content of the third post.', 1);
+INSERT INTO posts (title,imagename, content, userID) VALUES
+    ('First Post', 'lion.png', 'This is the content of the first post.', 1),
+    ('Second Post', 'lion.png','This is the content of the second post.', 2),
+    ('Third Post', 'lion.png', 'This is the content of the third post.', 1);

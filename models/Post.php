@@ -5,12 +5,14 @@ class Post {
     private $content;
     private $postID;
     private $userID;
+    private $image;
     
     public function load($row){
         $this->setUserID($row['userID']);
         $this->setContent($row['content']);
         $this->setTitle($row["title"]);
         $this->setPostID($row["postID"]);
+        $this->setImage($row["imagename"]);
     
     }
 
@@ -43,6 +45,13 @@ class Post {
 
     public function getTitle(){
         return $this->title;
+    }
+    public function setImage($image){
+        $this->image=$image;
+    }
+
+    public function getImage(){
+        return $this->image;
     }
 
 }

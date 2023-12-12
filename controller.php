@@ -64,6 +64,7 @@
             $controllers["POST"."login"] = new Login();
             $controllers["GET"."home"] = new Home();
             $controllers["GET"."about"] = new About();
+            $controllers["GET"."posttemplate"] = new PostTemplate();
             
             return $controllers;
         }
@@ -72,6 +73,11 @@
         /******************************************************
          * Check Access restrictions for selected controller  *
          ******************************************************/
+        if($controller->getAccess()=='PRIVATE'){
+            if(!isset($_SESSION['isAdmin'])){
+                $controller = $this->controllers["GET"."home"];  
+            }
+        }
             if($controller->getAccess()=='PROTECTED'){
                 if(!isset($_SESSION['loggedin'])){
                     //*** Not Logged In ****/
@@ -82,7 +88,7 @@
         }
 
         private function showErrors($debug){
-            if($debug==0){
+            if($debug==1){
                 ini_set('display_errors', 1);
                 ini_set('display_startup_errors', 1);
                 error_reporting(E_ALL);

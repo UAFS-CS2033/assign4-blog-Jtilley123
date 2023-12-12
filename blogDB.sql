@@ -32,13 +32,13 @@ insert into users(username,lastname,firstname,passwd,email,urole)
    values('jsmith','Smith','Joe','buddy','jsmith@gmail.com','admin');
 
 insert into users(username,lastname,firstname,passwd,email,urole)
-   values('bwilliams','Williams','Brian','pass123','bwilliams@gmail.com','user');
+   values('bwilliams','Williams','Brian','pass123','bwilliams@gmail.com','author');
 
 insert into users(username,lastname,firstname,passwd,email,urole)
-   values('mjones','Jones','Mike','pass1234','mjones@gmail.com','user');
+   values('mjones','Jones','Mike','pass1234','mjones@gmail.com','author');
 
 insert into users(username,lastname,firstname,passwd,email,urole)
-   values('mjohnson','Johnson','Monica','password','mjohnson@gmail.com','user');
+   values('mjohnson','Johnson','Monica','password','mjohnson@gmail.com','author');
 
 INSERT INTO posts (title, content, userID) VALUES
     ('First Post', 'This is the content of the first post.', 1),

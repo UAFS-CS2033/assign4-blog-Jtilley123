@@ -22,10 +22,23 @@
                     <a class="nav-link" href="controller.php?page=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="controller.php?page=list">Admin</a>
+                    <?php
+                    if(isset($_SESSION['isAdmin'])){
+                        echo "<a class=\"nav-link\" href=\"controller.php?page=list\">Admin</a>"; 
+                    }
+                    
+                    
+                    ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="controller.php?page=author">Author</a>
+                <?php
+                    if(isset($_SESSION['loggedin'])){
+                        echo "<a class=\"nav-link\" href=\"controller.php?page=author\">Author</a>"; 
+                    }
+                    
+                    
+                    ?>
+                    
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="controller.php?page=about">About</a>

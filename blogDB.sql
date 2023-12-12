@@ -41,6 +41,11 @@ insert into users(username,lastname,firstname,passwd,email,urole)
    values('mjohnson','Johnson','Monica','password','mjohnson@gmail.com','author');
 
 INSERT INTO posts (title, content, userID) VALUES
-    ('First Post', 'This is the content of the first post.', 1),
-    ('Second Post', 'This is the content of the second post.', 2),
-    ('Third Post', 'This is the content of the third post.', 1);
+    ('Admin Post 1', 'Very first post! Enjoy my blog.', 1),
+    ('Awful site', 'Why is this site so buggy???? 1 star rating.', 2),
+    ('Admin Post 2', 'Some bugs were fixed in this update! Enjoy the website.', 1),
+    ('Help', 'Can someone message me to tell me the meaning of life.', 2),
+    ('Getting better', 'This site is getting a little better but its still horrible', 2),
+    ('Best site ever!', 'This is my favorite website of all time. This is awesome I named my first child after this website', 2),
+    ('Admin Post 3', 'Ive lost all motivation at this point. I dont wanna be an admin anymore', 1);
+

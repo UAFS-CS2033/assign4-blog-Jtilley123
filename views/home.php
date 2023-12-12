@@ -5,8 +5,8 @@
     <div class="card mb-4">
         <img src="https://via.placeholder.com/1200x600" class="card-img-top" alt="Featured Image">
         <div class="card-body">
-            <h2 class="card-title">Featured Post Title</h2>
-            <p class="card-text">This is the featured blog post. Add your content here. It can be longer and more detailed.</p>
+            <h2 class="card-title">Admin Post 1</h2>
+            <p class="card-text">Very first Post! Enjoy my blog.</p>
             <form action="controller.php" method="GET">
             <input type="hidden" name="postID" value="1">
             <button class="btn btn-primary" type="submit" name="page" value="posttemplate">Read More</button>
@@ -37,7 +37,7 @@ echo "<div class=\"col-md-4 mb-4\">
         <h5 class=\"card-title\">".$posts[$index]->getTitle()."</h5>
         <p class=\"card-text\">".$posts[$index]->getContent()."</p>
         <form action=\"controller.php\" method=\"GET\">
-        <input type=\"hidden\" name=\"postID\" value=\"".$posts[$index]->getPostID()."\">
+        
         <button class=\"btn btn-primary\" type=\"submit\" name=\"page\" value=\"posttemplate\">Read More</button>
         
     </div>
